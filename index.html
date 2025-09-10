@@ -16,10 +16,18 @@
 </head>
 <body>
   <div class="container">
-    <header class="header">
-    
+   <header class="header">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#About">About</a>
+        <a href="#Experience">Experience</a>
+        <a href="#Skills">Skills</a>
+        <a href="#Projects">Projects</a>
+        <a href="#Connect">Connect</a>
+      </nav>
+
       <h1 class="site-name">Alaska Florez</h1>
       <p class="tagline">Developer • Entrepreneur • Designer</p>
+
 
     <img
       class="avatar"
@@ -36,36 +44,50 @@
       <p>I am passionate about technology and learning programming. I enjoy solving problems and growing through challenges.</p>
     </section>
 
-
     <section id="Experience" class="experience">
       <h2>Experience</h2>
       <ul class="experience-list">
-        <li>Completed Lesson-5 assignment (HTML/CSS basics)</li>
-        <li>Learning JavaScript fundamentals</li>
-        <li>Technologies: VS Code, Git, GitHub</li>
+        <li class="xp-item">
+          <div class="xp-top">
+            <span class="xp-role">Front-End Student</span>
+            <span class="xp-dates">2025 – Present</span>
+          </div>
+          <p class="xp-desc">HTML, CSS, Git, GitHub, JavaScript fundamentals.</p>
+        </li>
+        <li class="xp-item">
+          <div class="xp-top">
+            <span class="xp-role">Course: Lesson 8</span>
+            <span class="xp-dates">2025</span>
+          </div>
+          <p class="xp-desc">Basic styling and initial layout work.</p>
+        </li>
       </ul>
     </section>
 
-  
+    <section id="Skills" class="skills">
+      <h2>Skills</h2>
+    </section>
+
+    <section id="Projects" class="projects">
+      <h2>Projects</h2>
+      <ul id="project-list"></ul>
+    </section>
+
     <section id="Connect" class="connect">
       <h2>Connect</h2>
-      <nav class="social">
-    <a class="icon"
-       href="https://github.com/alaskaflorez22"
-       target="_blank" rel="noopener"
-       aria-label="GitHub" title="GitHub">🐙</a>
+      <nav class="social" aria-label="Social links">
+        <a class="icon"
+           href="https://github.com/alaskaflorez22"
+           target="_blank" rel="noopener"
+           aria-label="GitHub" title="GitHub">🐙</a>
 
-    <a class="icon"
-       href="https://www.linkedin.com/in/alaska-florez?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BQs2hQAU5RjyfZCbqvzUgaQ%3D%3D"
-       target="_blank" rel="noopener"
-       aria-label="LinkedIn" title="LinkedIn">🔗</a>
-
-  </nav>
-</section>
-
-
+        <a class="icon"
+           href="https://www.linkedin.com/in/alaska-florez"
+           target="_blank" rel="noopener"
+           aria-label="LinkedIn" title="LinkedIn">🔗</a>
       </nav>
     </section>
+
   </div>
 </body>
 </html>
