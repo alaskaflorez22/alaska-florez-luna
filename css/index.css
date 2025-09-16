@@ -212,17 +212,144 @@ img{
   line-height: 1.5;
 }
 
-@media (max-width: 600px) {
-  .xp-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-  .xp-dates { font-size: 0.85rem; }
+html { scroll-behavior: smooth; }
+#About, #Experience, #Skills, #Projects, #Connect {
+  scroll-margin-top: 96px;
 }
 
-html { scroll-behavior: smooth; }
 
-#About, #Experience, #Skills, #Projects, #Connect {
-  scroll-margin-top: 96px; 
+
+
+/* Media Queries (mobile-first, Tablet, Desktop) */
+
+
+/* Mobile (<= 600px) */
+@media screen and (max-width: 37.5em) {
+
+    /* 1) Experience: stack role and dates */
+  .xp-top {
+    flex-direction: column;   
+    align-items: flex-start;  
+    gap: 4px;       
+  }
+  
+  .xp-dates { font-size: 0.85rem; }
+
+  /* 2) More compact main title */
+  .site-name {
+    font-size: 2.25rem;   
+    letter-spacing: 1px;  
+  }
+
+  /* 3) Smaller avatar */
+  .avatar {
+    width: 120px;     
+    height: 120px;   
+    margin-top: 12px; 
+  }
+
+  /* 4) Navigation with less space */
+  .site-nav {
+    gap: 8px;          
+    padding: 8px 12px; 
+  }
+
+  .site-nav a {
+    padding: 6px 8px;  
+    font-weight: 600;  
+  }
+
+  /* 5) More contained sections */
+   section {
+    padding: 16px;   
+    margin: 24px 0;  
+  }
+}
+
+
+/* Tablet (>= 768px) */
+@media screen and (min-width: 48em) { /* 768px */
+    
+  /* 1) Main title gains prominence */  .site-name {
+    font-size: 3.25rem;
+    letter-spacing: 2px;
+  }
+
+  /* 2) Container slightly wider and with more padding */
+  .container {
+    max-width: 1000px;
+    padding: 28px;
+  }
+
+  /* 3) Experience in a 2-column grid (stretch here) */
+  .experience-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  /* 4) Larger avatar with border */
+  .avatar {
+    width: 180px;
+    height: 180px;
+    border: 3px solid #22314a;
+  }
+
+  /* 5) More readable navigation links */
+  .site-nav a {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+
+  /* (Opcional) Connect: grid en tablet */
+  .connect .social {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+
+/* Desktop (>= 1024px) */
+@media screen and (min-width: 64em) {
+
+  /* 1) Large desktop-type container */
+  .container {
+    max-width: 72rem; 
+    padding: 32px;
+  }
+
+  /* 2) Sections with more air and smooth radii */
+  section {
+    padding: 28px;
+    border-radius: 20px;
+  }
+
+  /* 3) Experience in 3 columns */
+  .experience-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  /* 4) More spaced-out navigation */
+  .site-nav {
+    gap: 20px;
+    padding: 12px 16px;
+  }
+  .site-nav a {
+    padding: 10px 14px;
+    font-weight: 700;
+  }
+
+  /* 5) Larger/clearer subtitles */
+  h2 {
+    font-size: 1.75rem;
+    color: #eef2f7;
+  }
+
+  /* (Optional) Connect more columns on desktop */
+  .connect .social {
+    grid-template-columns: repeat(6, auto);
+    gap: 16px;
+  }
 }
