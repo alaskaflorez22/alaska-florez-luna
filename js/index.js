@@ -48,3 +48,72 @@ for (let i = 0; i < skills.length; i++) {
   skill.innerText = skills[i];                // texto del li
   skillsList.appendChild(skill);              // agregar al <ul>
 }
+
+
+
+
+// ========== GitHub Repositories (Fetch API) ==========
+
+
+const GITHUB_USERNAME = 'alaskaflorez22'; 
+const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+
+const projectSection = document.querySelector('#Projects');
+const projectList    = projectSection.querySelector('#project-list');
+const projectsError  = document.getElementById('projects-error');
+
+function showError(message) {
+  projectsError.textContent = message;
+  projectsError.hidden = false;
+}
+
+function renderRepositories(repositories) {
+
+  if (!Array.isArray(repositories) || repositories.length === 0) {
+    showError('No repositories found to display.');
+    return;
+  }
+projectList.innerHTML = '';
+
+for (let i = 0; i < repositories.length; i++) {
+    const repo = repositories[i];  
+
+     const project = document.createElement('li');
+
+     const a = document.createElement('a');
+    a.href = repo.html_url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = repo.name; 
+
+     const small = document.createElement('small');
+    if (repo.description) {
+      small.textContent = ` — ${repo.description}`;
+    }
+
+     project.appendChild(a);
+    if (small.textContent) project.appendChild(small);
+    projectList.appendChild(project);
+  }
+}
+
+
+
+fetch(API_URL)
+
+.then((response) => {
+    if (!response.ok) {
+      throw new Error(`GitHub API error (${response.status})`);
+    }
+    return response.json();
+    })
+
+    .then((repositories) => {
+    console.log('Repositories:', repositories); // para revisar la respuesta
+    renderRepositories(repositories);
+     })
+
+     .catch((error) => {
+    console.error(error);
+    showError('We were unable to load your projects at this time. Please try again later.');
+  });
