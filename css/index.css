@@ -390,3 +390,49 @@ html { scroll-behavior: smooth; }
     padding: 0.45rem 0.7rem;
   }
 }
+
+
+
+/* ===== Projects list (grid) ===== */
+
+#project-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;                
+  gap: 0.75rem 1rem;
+  grid-template-columns: 1fr;    
+}
+
+#project-list li {
+  padding: 0.75rem 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  background: #0b1324;
+}
+
+#project-list a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#project-list small {
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+
+@media (min-width: 640px) {
+  #project-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  #project-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ===== Projects error ===== */
+#projects-error {
+  color: #fca5a5;                
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
