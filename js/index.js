@@ -1,31 +1,31 @@
 
 // ========== Footer dinámico ==========
 
-// 1) Fecha de hoy y año actual (sin hardcodear)
+// 1) Date
 const today = new Date();
 const thisYear = today.getFullYear();
 
-// 2) Crear <footer> por DOM Manipulation
+// 2) Create <footer> for DOM Manipulation
 const footerEl = document.createElement('footer');
 document.body.appendChild(footerEl);
 
-// 3) "DOM Selection": seleccionar el <footer> del DOM en la variable 'footer'
+// 3) "DOM Selection"
 const footer = document.querySelector('footer');
 
-// 4) Crear <p> de copyright
+// 4) create <p> de copyright
 const copyright = document.createElement('p');
-// STRETCH: símbolo © con Unicode
+// STRETCH
 copyright.innerHTML = `\u00A9 Alaska Florez ${thisYear}`;
 
-// 5) Insertar el <p> dentro del footer
+// 5) Add the <p> in footer
 footer.appendChild(copyright);
 
 
 
 
-// ========== Skills dinámicos ==========
+// ========== Skills ==========
 
-// 1) Lista de habilidades
+// 1) List of skills
 const skills = [
   'JavaScript',
   'HTML',
@@ -36,17 +36,17 @@ const skills = [
   'UX Basics',
 ];
 
-// 2) Seleccionar la sección por id (S mayúscula porque tu HTML usa #Skills)
+// 2) Select for id 
 const skillsSection = document.querySelector('#Skills');
 
-// 3) Dentro de la sección, seleccionar el <ul>
+// 3) Within the section, select the <ul>
 const skillsList = skillsSection.querySelector('ul');
 
-// 4) Recorrer el array y crear <li> (la tarea sugiere nombrar la variable como 'skill')
+// 4) Iterate through the array and create <li> 
 for (let i = 0; i < skills.length; i++) {
-  const skill = document.createElement('li'); // crear <li>
-  skill.innerText = skills[i];                // texto del li
-  skillsList.appendChild(skill);              // agregar al <ul>
+  const skill = document.createElement('li'); 
+  skill.innerText = skills[i];                
+  skillsList.appendChild(skill);            
 }
 
 
@@ -109,7 +109,7 @@ fetch(API_URL)
     })
 
     .then((repositories) => {
-    console.log('Repositories:', repositories); // para revisar la respuesta
+    console.log('Repositories:', repositories); 
     renderRepositories(repositories);
      })
 
@@ -117,3 +117,70 @@ fetch(API_URL)
     console.error(error);
     showError('We were unable to load your projects at this time. Please try again later.');
   });
+
+
+  // ========== Message Form: submit -> render list ==========
+
+const messageForm = document.querySelector('form[name="leave_message"]');
+
+if (messageForm) {
+  messageForm.addEventListener('submit', function (event) {
+    
+    event.preventDefault();
+
+    
+    const name = event.target.usersName.value.trim();
+    const email = event.target.usersEmail.value.trim();
+    const message = event.target.usersMessage.value.trim();
+
+    
+    console.log({ name, email, message });
+
+   
+    const messageSection = document.querySelector('#messages');
+    const messageList = messageSection.querySelector('ul');
+
+ 
+    messageSection.hidden = false;
+
+    
+    const newMessage = document.createElement('li');
+    newMessage.innerHTML = `
+      <a href="mailto:${email}">${name}</a>
+      <span> - ${message}</span>
+    `;
+
+
+    const editButton = document.createElement('button');
+    editButton.type = 'button';
+    editButton.innerText = 'edit';
+    editButton.addEventListener('click', function () {
+      const span = newMessage.querySelector('span');
+      const current = span?.innerText.replace(/^ - /, '') || '';
+      const next = window.prompt('Edit the message:', current);
+      if (next !== null) span.innerText = ` - ${next}`;
+    });
+
+    
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.innerText = 'remove';
+    removeButton.addEventListener('click', function () {
+      const entry = this.parentNode; // li
+      entry.remove();
+      if (messageList.children.length === 0) {
+        messageSection.hidden = true; 
+      }
+    });
+
+
+    newMessage.append(' ');
+    newMessage.appendChild(editButton);
+    newMessage.append(' ');
+    newMessage.appendChild(removeButton);
+    messageList.appendChild(newMessage);
+
+  
+    event.target.reset();
+  });
+}

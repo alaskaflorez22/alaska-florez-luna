@@ -6,38 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alaska Florez Portfolio</title>
 
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Londrina+Shadow&family=Poller+One&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sail&display=swap" rel="stylesheet">
 
-  
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
   <div class="container">
-   <header class="header">
+    <header class="header">
       <nav class="site-nav" aria-label="Primary">
         <a href="#About">About</a>
         <a href="#Experience">Experience</a>
         <a href="#Skills">Skills</a>
         <a href="#Projects">Projects</a>
         <a href="#Connect">Connect</a>
+        <a href="#leave-message">Leave a Message</a><!-- nuevo link -->
       </nav>
 
       <h1 class="site-name">Alaska Florez</h1>
       <p class="tagline">Developer • Entrepreneur • Designer</p>
 
-
-    <img
-      class="avatar"
-      src="img/alaska.foto.jpg"
-      alt="Retrato de Alaska Florez sonriendo"
-      width="160" height="160"
-      loading="lazy"
-/>
+      <img
+        class="avatar"
+        src="img/alaska.foto.jpg"
+        alt="Retrato de Alaska Florez sonriendo"
+        width="160" height="160"
+        loading="lazy"
+      />
     </header>
-
 
     <section id="About" class="about">
       <h2>About</h2>
@@ -72,8 +69,7 @@
     <section id="Projects" class="projects">
       <h2>Projects</h2>
       <ul id="project-list"></ul>
-        <p id="projects-error" hidden role="status" aria-live="polite"></p>
-
+      <p id="projects-error" hidden role="status" aria-live="polite"></p>
     </section>
 
     <section id="Connect" class="connect">
@@ -91,9 +87,33 @@
       </nav>
     </section>
 
+    <!-- Leave a Message -->
+    <section id="leave-message">
+      <h2>Leave a Message</h2>
+
+      <form name="leave_message">
+        <label for="usersName">Name</label>
+        <input id="usersName" type="text" name="usersName" required />
+
+        <label for="usersEmail">Email</label>
+        <input id="usersEmail" type="email" name="usersEmail" required />
+
+        <label for="usersMessage">Message</label>
+        <textarea id="usersMessage" name="usersMessage" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- Messages list (hidden al inicio: stretch goal) -->
+    <section id="messages" hidden>
+      <h2>Messages</h2>
+      <ul></ul>
+    </section>
+
   </div>
- 
- <script src="js/index.js"></script>
+
+  <script src="js/index.js"></script>
 </body>
 </html>
 
