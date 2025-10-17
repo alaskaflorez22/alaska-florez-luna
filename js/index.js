@@ -7,6 +7,7 @@ const thisYear = today.getFullYear();
 
 // 2) Create <footer> for DOM Manipulation
 const footerEl = document.createElement('footer');
+footerEl.className = 'site-footer';
 document.body.appendChild(footerEl);
 
 // 3) "DOM Selection"
@@ -68,6 +69,8 @@ function showError(message) {
 }
 
 function renderRepositories(repositories) {
+  projectsError.hidden = true;       
+  projectsError.textContent = ''; 
 
   if (!Array.isArray(repositories) || repositories.length === 0) {
     showError('No repositories found to display.');
